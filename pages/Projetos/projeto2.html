@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Meus Projetos</title>
   <link rel="stylesheet" href="../projetos.css">
 </head>
-
 <body>
   <canvas id="birthday"></canvas>
 
@@ -15,22 +13,42 @@
     <h1>Meus Projetos</h1>
     <p>Veja abaixo alguns dos meus principais trabalhos.</p>
   </header>
+
+  <!-- Formulário de IMC -->
   <section class="imc-form">
+    <h2>Calculadora de IMC</h2>
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso" placeholder="Ex: 70" required>
+
+    <label for="altura">Altura (m):</label>
+    <input type="number" step="0.01" id="altura" placeholder="Ex: 1.75" required>
+
+    <button onclick="calcularIMC()">Calcular IMC</button>
+
     <div class="resultado" id="resultado"></div>
   </section>
 
-  <script>
-    let mensagem = "Hello World";
-    document.getElementById('resultado').textContent = mensagem;
-
-  </script>
-
-
   <footer>
-    <p>&copy; 2025 Suelen Rocha. Todos os direitos reservados.</p>
+    <p>&copy; 2025 Seu Nome. Todos os direitos reservados.</p>
   </footer>
 
-</body>
+  <script>
+    function calcularIMC() {
+      const peso = parseFloat(document.getElementById('peso').value);
+      const altura = parseFloat(document.getElementById('altura').value);
+      
+      if (!peso || !altura) {
+        document.getElementById('resultado').textContent = "Por favor, preencha os dois campos.";
+        return;
+      }
 
+      const imc = peso / (altura * altura);
+      const imcArredondado = imc.toFixed(2);
+
+      document.getElementById('resultado').textContent = "Seu IMC é: " + imcArredondado;
+    }
+  </script>
+
+</body>
 </html>
 <script src="projeto3/scripts.js"></script>
